@@ -1,0 +1,16 @@
+{
+  "name": "sync-play-list",
+  "version": "0.0.1",
+  "description": "synchronize music playlist",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.2",
+    "mysql": "^2.13.0",
+    "socket.io": "^2.0.3"
+  }
+}

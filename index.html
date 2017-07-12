@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Play List</title>
+  </head>
+  <body>
+    <form id=add action="">
+      <input id="addsong"/>
+      <input id="addartist"/>
+      <button>add</button>
+    </form>
+    <form id=delete action="">
+      <input id="delsong"/>
+      <input id="delartist"/>
+      <button>delete</button>
+    </form>
+    <h3> < Play List > </h2>
+    <ol id="playlist"></ol>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+            var socket = io();
+            var localist = [];
+
+            $('form#add').submit(function(){
+                var music = {};
+                music.song = $('#addsong').val();
+                music.artist = $('#addartist').val();
+                socket.emit('add music', music);
+                $('#addsong').val('');
+                $('#addartist').val('');
+                return false;
+            });
+
+            $('form#delete').submit(function(){
+                var music = {};
+                music.song = $('#delsong').val();
+                music.artist = $('#delartist').val();
+                socket.emit('delete music', music);
+                $('#delsong').val('');
+                $('#delartist').val('');
+                return false;
+            });
+
+            socket.on('sync playlist', function(list){
+                localist = list;
+                $('#playlist').empty();
+                for(var i in list){
+                    var music = list[i];
+                    $('#playlist').append($('<li>').text(music.song + ' - ' + music.artist));
+                }
+            });
+
+            socket.on('add music', function(music){
+                localist.push(music);
+                $('#playlist').append($('<li>').text(music.song + ' - ' + music.artist));
+            });
+
+            socket.on('delete music', function(music){
+                for(var i in localist){
+                    if(localist[i].song == music.song && localist[i].artist == music.artist){
+                        localist.splice(i, 1);
+                        break;
+                    }
+                }
+                $('#playlist').empty();
+                for(var i in localist){
+                    var m = localist[i];
+                    $('#playlist').append($('<li>').text(m.song + ' - ' + m.artist));
+                }
+            });
+        });
+    </script>
+  </body>
+</html>
