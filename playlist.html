@@ -1,0 +1,213 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Play List</title>
+    <style>
+        th, td {
+            border-bottom: 1px solid #ddd;
+            padding: 15px;
+            text-align: left;
+        }
+        .playlist {
+            width: 70%;
+        }
+        .songImg {
+            width: 10%;
+        }
+        .songName {
+            width: 70%;
+        }
+        .artistName {
+            width: 20%;
+        }
+        .delete-button {
+            display: none;
+        }
+        .complete-button {
+            margin-right: 10%;
+            float: right;
+            display: none;
+        }
+        .delete-start-button {
+            margin-right: 10%;
+            float: right;
+        }
+        tr:hover {background-color: #f5f5f5}
+    </style>
+  </head>
+  <body>
+    <div id="playlist-change-notify"></div>
+    <div id="upper-container">
+        <h2>hello!!!</h2>
+        <div id="recommand-channels"></div>
+        <div id="subscribe-channels">
+            <button id="pl1bt" type="button" name="button" onclick="playlistView('pl1')" style="background:red">pl1</button>
+            <button id="pl2bt" type="button" name="button" onclick="playlistView('pl2')">pl2</button>
+            <button id="pl3bt" type="button" name="button" onclick="playlistView('pl3')">pl3</button>
+        </div>
+    </div>
+    <div id="playlists">
+        <div id="pl1">
+            <h3>playlist1</h3>
+            <button class="delete-start-button" onclick="deleteButton()">삭제</button>
+            <button class="complete-button" onclick="deleteComplete()">완료</button>
+            <table id="playlist1" class="playlist">
+                <tr>
+                    <th class="songImg">img</th>
+                    <th class="artistName">가수</th>
+                    <th class="songName">제목</th>
+                    <th class="delete-button"><button>delete</button></th>
+                </tr>
+                <tr>
+                    <th class="songImg">img</th>
+                    <th class="artistName">가수</th>
+                    <th class="songName">제목</th>
+                    <th class="delete-button"><button>delete</button></th>
+                </tr>
+                <tr>
+                    <th class="songImg">img</th>
+                    <th class="artistName">가수</th>
+                    <th class="songName">제목</th>
+                    <th class="delete-button"><button>delete</button></th>
+                </tr>
+            </table>
+        </div>
+        <div id="pl2" style="display:none">
+            <h3>playlist2</h3>
+            <button class="delete-start-button" onclick="deleteButton()">삭제</button>
+            <button class="complete-button" onclick="deleteComplete()">완료</button>
+            <table id="playlist2" class="playlist">
+                <tr>
+                    <th class="songImg">img</th>
+                    <th class="artistName">가수</th>
+                    <th class="songName">제목</th>
+                    <th class="delete-button"><button>delete</button></th>
+                </tr>
+                <tr>
+                    <th class="songImg">img</th>
+                    <th class="artistName">가수</th>
+                    <th class="songName">제목</th>
+                    <th class="delete-button"><button>delete</button></th>
+                </tr>
+                <tr>
+                    <th class="songImg">img</th>
+                    <th class="artistName">가수</th>
+                    <th class="songName">제목</th>
+                    <th class="delete-button"><button>delete</button></th>
+                </tr>
+                <tr>
+                    <th class="songImg">img</th>
+                    <th class="artistName">가수</th>
+                    <th class="songName">제목</th>
+                    <th class="delete-button"><button>delete</button></th>
+                </tr>
+                <tr>
+                    <th class="songImg">img</th>
+                    <th class="artistName">가수</th>
+                    <th class="songName">제목</th>
+                    <th class="delete-button"><button>delete</button></th>
+                </tr><tr>
+                    <th class="songImg">img</th>
+                    <th class="artistName">가수</th>
+                    <th class="songName">제목</th>
+                    <th class="delete-button"><button>delete</button></th>
+                </tr>
+                <tr>
+                    <th class="songImg">img</th>
+                    <th class="artistName">가수</th>
+                    <th class="songName">제목</th>
+                    <th class="delete-button"><button>delete</button></th>
+                </tr>
+            </table>
+        </div>
+        <div id="pl3" style="display:none">
+            <h3>playlist3</h3>
+            <button class="delete-start-button" onclick="deleteButton()">삭제</button>
+            <button class="complete-button" onclick="deleteComplete()">완료</button>
+            <table id="playlist3" class="playlist">
+                <tr>
+                    <th class="songImg">img</th>
+                    <th class="artistName">가수</th>
+                    <th class="songName">제목</th>
+                    <th class="delete-button"><button>delete</button></th>
+                </tr>
+                <tr>
+                    <th class="songImg">img</th>
+                    <th class="artistName">가수</th>
+                    <th class="songName">제목</th>
+                    <th class="delete-button"><button>delete</button></th>
+                </tr>
+                <tr>
+                    <th class="songImg">img</th>
+                    <th class="artistName">가수</th>
+                    <th class="songName">제목</th>
+                    <th class="delete-button"><button>delete</button></th>
+                </tr>
+                <tr>
+                    <th class="songImg">img</th>
+                    <th class="artistName">가수</th>
+                    <th class="songName">제목</th>
+                    <th class="delete-button"><button>delete</button></th>
+                </tr><tr>
+                    <th class="songImg">img</th>
+                    <th class="artistName">가수</th>
+                    <th class="songName">제목</th>
+                    <th class="delete-button"><button>delete</button></th>
+                </tr>
+                <tr>
+                    <th class="songImg">img</th>
+                    <th class="artistName">가수</th>
+                    <th class="songName">제목</th>
+                    <th class="delete-button"><button>delete</button></th>
+                </tr><tr>
+                    <th class="songImg">img</th>
+                    <th class="artistName">가수</th>
+                    <th class="songName">제목</th>
+                    <th class="delete-button"><button>delete</button></th>
+                </tr>
+                <tr>
+                    <th class="songImg">img</th>
+                    <th class="artistName">가수</th>
+                    <th class="songName">제목</th>
+                    <th class="delete-button"><button>delete</button></th>
+                </tr>
+                <tr>
+                    <th class="songImg">img</th>
+                    <th class="artistName">가수</th>
+                    <th class="songName">제목</th>
+                    <th class="delete-button"><button>delete</button></th>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+        var activePlaylistView = "pl1";
+        function playlistView(plname) {
+            console.log("view change to >" + plname);
+            document.getElementById(activePlaylistView).style.display = "none";
+            document.getElementById(activePlaylistView+"bt").style.background = "white";
+            activePlaylistView = plname;
+            document.getElementById(plname).style.display = "";
+            document.getElementById(plname+"bt").style.background = "red";
+            $('.delete-button').css("display", "none");
+            $('.complete-button').css("display", "none");
+            $('.delete-start-button').show();
+        }
+
+        function deleteButton() {
+            $('.delete-start-button').css("display", "none");
+            $('.delete-button').show();
+            $('.complete-button').show();
+        }
+
+        function deleteComplete() {
+            $('.delete-button').css("display", "none");
+            $('.complete-button').css("display", "none");
+            $('.delete-start-button').show();
+        }
+    </script>
+  </body>
+</html>
